@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Protein Complex Modeling | Joshua Wu</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0a0d0f;
+      color: #f2f5f4;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    /* NAV */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 13, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #202629;
+    }
+
+    .nav-inner {
+      width: min(1100px, 90%);
+      margin: auto;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      color: #aeb8b6;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 120px 0 90px;
+      border-bottom: 1px solid #202629;
+    }
+
+    .eyebrow {
+      color: #8fa6a0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(46px, 7vw, 82px);
+      line-height: 0.98;
+      letter-spacing: -4px;
+      max-width: 900px;
+      margin-bottom: 30px;
+    }
+
+    .hero p {
+      color: #aeb8b6;
+      max-width: 700px;
+      font-size: 19px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .tag {
+      border: 1px solid #30383a;
+      padding: 8px 13px;
+      border-radius: 100px;
+      color: #c5cfcd;
+      font-size: 13px;
+    }
+
+    /* SECTIONS */
+
+    .section {
+      padding: 90px 0;
+      border-bottom: 1px solid #202629;
+    }
+
+    .section-label {
+      color: #71807d;
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 22px;
+    }
+
+    .section-intro {
+      color: #aeb8b6;
+      max-width: 760px;
+      font-size: 17px;
+      margin-bottom: 40px;
+    }
+
+    /* GRID */
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: #101517;
+      border: 1px solid #252d2f;
+      padding: 28px;
+      min-height: 220px;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #53615e;
+    }
+
+    .card-number {
+      color: #64716e;
+      font-size: 12px;
+      margin-bottom: 25px;
+    }
+
+    .card h3 {
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #98a3a0;
+      font-size: 14px;
+    }
+
+    /* WORKFLOW */
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .workflow-step {
+      border: 1px solid #30383a;
+      background: #101517;
+      padding: 20px 10px;
+      text-align: center;
+      font-size: 12px;
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .arrow {
+      text-align: center;
+      color: #596663;
+      font-size: 18px;
+    }
+
+    /* FEATURE */
+
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-top: 35px;
+    }
+
+    .feature-box {
+      background: #101517;
+      border: 1px solid #252d2f;
+      padding: 35px;
+    }
+
+    .feature-box h3 {
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .feature-box p {
+      color: #a0aaa8;
+      font-size: 15px;
+    }
+
+    /* PRESENTATION */
+
+    .presentation {
+      border: 1px solid #30383a;
+      background: #101517;
+      padding: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .presentation h3 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .presentation p {
+      color: #98a3a0;
+      max-width: 650px;
+    }
+
+    .button {
+      display: inline-block;
+      border: 1px solid #687572;
+      padding: 13px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      background: #f2f5f4;
+      color: #0a0d0f;
+    }
+
+    /* ROLE */
+
+    .role-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .role-item {
+      padding: 22px;
+      border-left: 2px solid #4b5754;
+      background: #101517;
+    }
+
+    .role-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .role-item span {
+      color: #929d9a;
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 50px 0;
+      color: #707a78;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 90px 0 70px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .card-grid,
+      .feature,
+      .role-list {
+        grid-template-columns: 1fr;
+      }
+
+      .workflow {
+        grid-template-columns: 1fr;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+      }
+
+      .presentation {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="logo">JW</a>
+
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#research">Research</a>
+        <a href="../index.html#engineering">Engineering</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+    <div class="container">
+
+      <div class="eyebrow">
+        UCI Proteomics Research
+      </div>
+
+      <h1>
+        Modeling protein complexes with AlphaFold3.
+      </h1>
+
+      <p>
+        Computational structural biology work focused on predicting and
+        analyzing protein-protein interactions using AlphaFold3, followed by
+        structural visualization and interpretation with ChimeraX and PyMOL.
+      </p>
+
+      <div class="meta">
+        <span class="tag">Structural Biology</span>
+        <span class="tag">AlphaFold3</span>
+        <span class="tag">Protein Modeling</span>
+        <span class="tag">ChimeraX</span>
+        <span class="tag">PyMOL</span>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- OVERVIEW -->
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section-label">
+        01 / OVERVIEW
+      </div>
+
+      <h2>
+        From sequence to structure.
+      </h2>
+
+      <p class="section-intro">
+        At the UCI proteomics lab, I worked with computational protein
+        structure prediction to investigate binary protein complexes.
+        More than 20 complexes were modeled and evaluated using AlphaFold3,
+        with downstream visualization and structural analysis performed in
+        ChimeraX and PyMOL.
+      </p>
+
+      <div class="card-grid">
+
+        <div class="card">
+          <div class="card-number">01</div>
+          <h3>20+ Complexes</h3>
+          <p>
+            Modeled and evaluated a series of binary protein complexes
+            to examine predicted structures and potential interactions.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">02</div>
+          <h3>AlphaFold3</h3>
+          <p>
+            Used AlphaFold3 to generate structural predictions for
+            protein-protein complexes.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">03</div>
+          <h3>Structural Analysis</h3>
+          <p>
+            Examined confidence metrics and visualized predicted
+            structures to assess model quality and interactions.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- WORKFLOW -->
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section-label">
+        02 / WORKFLOW
+      </div>
+
+      <h2>
+        A computational structural biology workflow.
+      </h2>
+
+      <p class="section-intro">
+        The project moved from protein sequence preparation through
+        structure prediction, confidence evaluation, visualization,
+        and biological interpretation.
+      </p>
+
+      <div class="workflow">
+
+        <div class="workflow-step">
+          Protein<br>Sequences
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="workflow-step">
+          AlphaFold3
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="workflow-step">
+          pTM / ipTM
+        </div>
+
+        <div class="arrow">→</div>
+
+        <div class="workflow-step">
+          PAE
+        </div>
+
+      </div>
+
+      <div class="workflow" style="margin-top: 10px;">
+
+        <div class="workflow-step">
+          Structural<br>Analysis
+        </div>
+
+        <div class="arrow">←</div>
+
+        <div class="workflow-step">
+          PyMOL
+        </div>
+
+        <div class="arrow">←</div>
+
+        <div class="workflow-step">
+          ChimeraX
+        </div>
+
+        <div class="arrow">←</div>
+
+        <div class="workflow-step">
+          Predicted<br>Structure
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ALPHAFOLD -->
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section-label">
+        03 / ALPHAFOLD3
+      </div>
+
+      <h2>
+        Evaluating predicted complexes.
+      </h2>
+
+      <p class="section-intro">
+        AlphaFold3 predictions were not treated as simply correct or
+        incorrect. I examined model confidence and structural context
+        to understand how reliable each predicted complex was.
+      </p>
+
+      <div class="feature">
+
+        <div class="feature-box">
+          <h3>pTM</h3>
+          <p>
+            Predicted Template Modeling score used as a measure of
+            confidence in the overall predicted protein structure.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3>ipTM</h3>
+          <p>
+            Interface predicted Template Modeling score used to assess
+            confidence in the predicted relative arrangement of
+            interacting proteins.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3>PAE</h3>
+          <p>
+            Predicted Aligned Error used to examine uncertainty in
+            relative positions between structural regions and protein
+            partners.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3>Model Comparison</h3>
+          <p>
+            Confidence metrics were considered alongside visual
+            inspection rather than being interpreted in isolation.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- STRUCTURAL VISUALIZATION -->
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section-label">
+        04 / VISUALIZATION
+      </div>
+
+      <h2>
+        Turning predictions into structures I could inspect.
+      </h2>
+
+      <p class="section-intro">
+        Predicted complexes were examined in molecular visualization
+        software to better understand protein interfaces, relative
+        orientation, and overall structural organization.
+      </p>
+
+      <div class="card-grid">
+
+        <div class="card">
+          <div class="card-number">01</div>
+          <h3>ChimeraX</h3>
+          <p>
+            Used for interactive visualization and inspection of
+            AlphaFold3 predicted protein complexes.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">02</div>
+          <h3>PyMOL</h3>
+          <p>
+            Used to visualize molecular structures and examine
+            predicted protein-protein interfaces.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">03</div>
+          <h3>Structural Interpretation</h3>
+          <p>
+            Connected computational confidence metrics with the
+            physical appearance and organization of predicted complexes.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- DOCUMENTATION -->
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section-label">
+        05 / DOCUMENTATION
+      </div>
+
+      <h2>
+        Research progress.
+      </h2>
+
+      <p class="section-intro">
+        The project was documented throughout the modeling process,
+        including computational predictions, structural analysis,
+        and research progress.
+      </p>
+
+      <div class="presentation">
+
+        <div>
+          <h3>
+            Dry Lab Progress Presentation
+          </h3>
+
+          <p>
+            View the research presentation documenting the computational
+            modeling work and progress from the UCI proteomics project.
+          </p>
+        </div>
+
+        <a
+          href="https://joshuatwu.github.io/DryLabProgressUpdated-4.pptx"
+          target="_blank"
+          class="button"
+        >
+          VIEW PRESENTATION →
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- BIOLOGICAL CONTEXT -->
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section-label">
+        06 / BIOLOGICAL CONTEXT
+      </div>
+
+      <h2>
+        Beyond a single protein.
+      </h2>
+
+      <p class="section-intro">
+        Protein function is often determined by interactions with other
+        proteins and molecular components. Modeling complexes provides
+        a way to investigate these relationships at the structural level.
+      </p>
+
+      <div class="feature">
+
+        <div class="feature-box">
+          <h3>Protein Interactions</h3>
+          <p>
+            Examining binary complexes provides a structural perspective
+            on how proteins may interact and organize into larger molecular
+            systems.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <h3>Larger Systems</h3>
+          <p>
+            The project also motivated exploration of larger assemblies
+            involving additional protein partners and nucleic acid
+            components.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FUTURE DIRECTION -->
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section-label">
+        07 / NEXT DIRECTION
+      </div>
+
+      <h2>
+        Scaling structural modeling.
+      </h2>
+
+      <p class="section-intro">
+        A future direction is to move beyond simple binary complexes
+        toward larger molecular assemblies. This includes investigating
+        additional protein partners and nucleic acid components while
+        continuing to evaluate prediction confidence and structural
+        plausibility.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- MY ROLE -->
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section-label">
+        08 / MY ROLE
+      </div>
+
+      <h2>
+        What I worked on.
+      </h2>
+
+      <p class="section-intro">
+        My work focused on the computational modeling and structural
+        interpretation side of the project.
+      </p>
+
+      <div class="role-list">
+
+        <div class="role-item">
+          <strong>Protein preparation</strong>
+          <span>
+            Prepared protein inputs for complex structure prediction.
+          </span>
+        </div>
+
+        <div class="role-item">
+          <strong>AlphaFold3 modeling</strong>
+          <span>
+            Generated and evaluated predicted binary protein complexes.
+          </span>
+        </div>
+
+        <div class="role-item">
+          <strong>Confidence analysis</strong>
+          <span>
+            Examined pTM, ipTM, and PAE to evaluate prediction confidence.
+          </span>
+        </div>
+
+        <div class="role-item">
+          <strong>Structural visualization</strong>
+          <span>
+            Used ChimeraX and PyMOL to inspect predicted molecular structures.
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="container">
+      UCI Proteomics Research · Joshua Wu · UCLA Bioengineering
+    </div>
+  </footer>
+
+</body>
+</html>
