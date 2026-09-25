@@ -1,764 +1,1168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AceBrace | Joshua Wu</title>
+<title>AceBrace | Joshua Wu</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #070b10;
-            color: #f2f5f7;
-            line-height: 1.7;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+body {
+    background: #050708;
+    color: #f3f5f4;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
 
-        .nav {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-            padding: 28px 0;
-        }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-        .back {
-            color: #8fa3b8;
-            font-size: 14px;
-        }
+img {
+    max-width: 100%;
+}
 
-        .back:hover {
-            color: white;
-        }
+.page {
+    width: 100%;
+    overflow: hidden;
+}
 
-        .hero {
-            width: 90%;
-            max-width: 1100px;
-            margin: 70px auto 100px;
-        }
+/* =========================
+   NAV
+========================= */
 
-        .eyebrow {
-            color: #7ee7c8;
-            font-size: 13px;
-            letter-spacing: 2px;
-            font-weight: bold;
-            margin-bottom: 18px;
-        }
+.nav {
+    width: 92%;
+    max-width: 1400px;
+    margin: auto;
+    padding: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #18201f;
+}
 
-        h1 {
-            font-size: clamp(42px, 7vw, 76px);
-            line-height: 1.05;
-            max-width: 900px;
-            margin-bottom: 28px;
-        }
+.nav-left {
+    color: #8b9895;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+}
 
-        .hero p {
-            max-width: 800px;
-            color: #aebbc7;
-            font-size: 20px;
-        }
+.nav-left:hover {
+    color: #9ff3d6;
+}
 
-        section {
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto 110px;
-        }
+.nav-right {
+    color: #53605d;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+}
 
-        .section-label {
-            color: #7ee7c8;
-            font-size: 12px;
-            letter-spacing: 2px;
-            font-weight: bold;
-            margin-bottom: 12px;
-        }
+/* =========================
+   HERO
+========================= */
 
-        h2 {
-            font-size: 34px;
-            line-height: 1.2;
-            margin-bottom: 22px;
-        }
+.hero {
+    width: 92%;
+    max-width: 1400px;
+    min-height: 82vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 0;
+    position: relative;
+}
 
-        h3 {
-            font-size: 21px;
-            margin-bottom: 10px;
-        }
+.hero::after {
+    content: "01";
+    position: absolute;
+    right: -20px;
+    bottom: 50px;
+    font-size: clamp(120px, 20vw, 300px);
+    font-weight: 800;
+    color: #0c1211;
+    z-index: -1;
+    line-height: 1;
+}
 
-        p {
-            color: #aebbc7;
-            max-width: 850px;
-        }
+.eyebrow {
+    color: #80e7c5;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-top: 35px;
-        }
+.hero h1 {
+    max-width: 1150px;
+    font-size: clamp(54px, 9vw, 138px);
+    line-height: .91;
+    letter-spacing: -5px;
+    font-weight: 700;
+    margin-bottom: 45px;
+}
 
-        .card {
-            background: #0d141c;
-            border: 1px solid #1d2a35;
-            padding: 28px;
-        }
+.hero-description {
+    max-width: 690px;
+    color: #98a5a2;
+    font-size: 19px;
+    line-height: 1.7;
+}
 
-        .card p {
-            font-size: 15px;
-        }
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 35px;
+}
 
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-top: 35px;
-        }
+.tag {
+    border: 1px solid #26322f;
+    padding: 7px 11px;
+    color: #7d8b87;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 
-        .media-card {
-            background: #0d141c;
-            border: 1px solid #1d2a35;
-            overflow: hidden;
-        }
+/* =========================
+   IMAGE SHOWCASE
+========================= */
 
-        .media-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+.hero-image {
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto 160px;
+    position: relative;
+}
 
-        .media-caption {
-            padding: 20px;
-        }
+.hero-image img {
+    width: 100%;
+    display: block;
+    background: #0b100f;
+    border: 1px solid #202b28;
+}
 
-        .media-caption h3 {
-            margin-bottom: 6px;
-        }
+.image-number {
+    position: absolute;
+    left: 25px;
+    bottom: 22px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #8ce7c8;
+    background: rgba(5,7,8,.85);
+    padding: 8px 12px;
+}
 
-        .media-caption p {
-            font-size: 14px;
-        }
+/* =========================
+   SECTIONS
+========================= */
 
-        video {
-            width: 100%;
-            display: block;
-            background: #000;
-        }
+.section {
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto 180px;
+}
 
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 25px;
-        }
+.section-header {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
 
-        .tag {
-            border: 1px solid #29404d;
-            color: #9fb2c1;
-            padding: 6px 11px;
-            font-size: 12px;
-        }
+.section-number {
+    color: #80e7c5;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
 
-        .highlight {
-            border-left: 2px solid #7ee7c8;
-            padding-left: 24px;
-            margin-top: 30px;
-        }
+.section-title {
+    max-width: 900px;
+    font-size: clamp(35px, 5vw, 72px);
+    line-height: 1;
+    letter-spacing: -2px;
+}
 
-        .patent-card {
-            margin-top: 40px;
-            padding: 45px;
-            background: #0d141c;
-            border: 1px solid #7ee7c8;
-        }
+.section-text {
+    max-width: 760px;
+    color: #8f9b98;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-top: 25px;
+}
 
-        .patent-label {
-            color: #7ee7c8;
-            font-size: 12px;
-            letter-spacing: 2px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+/* =========================
+   PROBLEM
+========================= */
 
-        .patent-card h3 {
-            font-size: 34px;
-            margin-bottom: 12px;
-        }
+.problem-box {
+    border-top: 1px solid #27302e;
+    border-bottom: 1px solid #27302e;
+    padding: 45px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
 
-        .patent-card p {
-            max-width: 700px;
-        }
+.problem-large {
+    font-size: clamp(28px, 4vw, 54px);
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+}
 
-        .button {
-            display: inline-block;
-            margin-top: 30px;
-            border: 1px solid #7ee7c8;
-            color: #7ee7c8;
-            padding: 12px 18px;
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
+.problem-small {
+    color: #7e8a87;
+    max-width: 500px;
+    font-size: 16px;
+}
 
-        .button:hover {
-            background: #7ee7c8;
-            color: #07100e;
-        }
+/* =========================
+   MEDIA GRID
+========================= */
 
-        footer {
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 50px 0;
-            border-top: 1px solid #1d2a35;
-            color: #71808d;
-            font-size: 13px;
-        }
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
 
-        @media (max-width: 700px) {
-            .grid,
-            .media-grid {
-                grid-template-columns: 1fr;
-            }
+.media-card {
+    background: #0a0f0e;
+    border: 1px solid #202a28;
+    overflow: hidden;
+    transition: transform .3s ease, border-color .3s ease;
+}
 
-            .hero {
-                margin-top: 45px;
-            }
+.media-card:hover {
+    transform: translateY(-5px);
+    border-color: #4b7768;
+}
 
-            h1 {
-                font-size: 46px;
-            }
+.media-card img {
+    width: 100%;
+    display: block;
+    background: #0c1110;
+}
 
-            .patent-card {
-                padding: 28px;
-            }
-        }
-    </style>
+.media-caption {
+    padding: 25px;
+    border-top: 1px solid #202a28;
+}
+
+.media-caption-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.media-caption-number {
+    color: #80e7c5;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.media-caption h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.media-caption p {
+    color: #75817e;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* Full-width image */
+
+.media-full {
+    margin-top: 18px;
+    background: #0a0f0e;
+    border: 1px solid #202a28;
+    overflow: hidden;
+}
+
+.media-full img {
+    width: 100%;
+    display: block;
+}
+
+.media-full-caption {
+    padding: 24px;
+    border-top: 1px solid #202a28;
+}
+
+/* =========================
+   DATA
+========================= */
+
+.data-grid {
+    display: grid;
+    grid-template-columns: 1.35fr .65fr;
+    gap: 18px;
+}
+
+.data-card {
+    background: #0a0f0e;
+    border: 1px solid #202a28;
+    overflow: hidden;
+}
+
+.data-card video,
+.data-card img {
+    width: 100%;
+    display: block;
+    background: #000;
+}
+
+.data-caption {
+    padding: 25px;
+    border-top: 1px solid #202a28;
+}
+
+.data-caption h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.data-caption p {
+    color: #75817e;
+    font-size: 13px;
+}
+
+/* =========================
+   ENGINEERING SYSTEM
+========================= */
+
+.system {
+    border-top: 1px solid #27302e;
+}
+
+.system-row {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    gap: 40px;
+    padding: 38px 0;
+    border-bottom: 1px solid #1b2422;
+}
+
+.system-number {
+    color: #80e7c5;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.system-title {
+    font-size: 24px;
+}
+
+.system-description {
+    color: #75817e;
+    font-size: 14px;
+    max-width: 500px;
+}
+
+/* =========================
+   PATENT REVEAL
+========================= */
+
+.patent-section {
+    position: relative;
+}
+
+.patent-box {
+    margin-top: 65px;
+    min-height: 500px;
+    border: 1px solid #557c6f;
+    background:
+        radial-gradient(circle at 80% 20%, rgba(126,231,197,.12), transparent 35%),
+        #09100e;
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.patent-box::before {
+    content: "IP";
+    position: absolute;
+    right: -25px;
+    bottom: -80px;
+    font-size: 300px;
+    font-weight: 800;
+    color: rgba(126,231,197,.035);
+    line-height: 1;
+}
+
+.patent-label {
+    color: #80e7c5;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.patent-box h3 {
+    font-size: clamp(45px, 7vw, 90px);
+    line-height: .95;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+}
+
+.patent-box p {
+    max-width: 650px;
+    color: #8b9995;
+    font-size: 16px;
+}
+
+.button {
+    display: inline-block;
+    width: fit-content;
+    margin-top: 35px;
+    border: 1px solid #80e7c5;
+    color: #80e7c5;
+    padding: 14px 20px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    transition: all .25s ease;
+}
+
+.button:hover {
+    background: #80e7c5;
+    color: #07100d;
+}
+
+/* =========================
+   COMMERCIALIZATION
+========================= */
+
+.commercial {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    border-top: 1px solid #27302e;
+    padding-top: 60px;
+}
+
+.commercial h3 {
+    font-size: 34px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.commercial p {
+    color: #808c89;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-top: 1px solid #202a28;
+    padding: 40px 0 60px;
+    display: flex;
+    justify-content: space-between;
+    color: #596460;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .nav {
+        width: 88%;
+    }
+
+    .hero,
+    .hero-image,
+    .section,
+    footer {
+        width: 88%;
+    }
+
+    .hero {
+        min-height: 75vh;
+        padding: 70px 0;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .section {
+        margin-bottom: 110px;
+    }
+
+    .section-header {
+        display: block;
+    }
+
+    .section-number {
+        margin-bottom: 20px;
+    }
+
+    .section-title {
+        font-size: 40px;
+    }
+
+    .problem-box,
+    .commercial {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .media-grid,
+    .data-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .system-row {
+        grid-template-columns: 60px 1fr;
+        gap: 20px;
+    }
+
+    .system-description {
+        grid-column: 2;
+    }
+
+    .patent-box {
+        padding: 40px 25px;
+        min-height: 430px;
+    }
+
+    .patent-box h3 {
+        font-size: 52px;
+    }
+
+    footer {
+        display: block;
+    }
+
+    footer span {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+<div class="page">
 
-    <nav class="nav">
-        <a href="../index.html" class="back">
-            ← BACK TO PORTFOLIO
-        </a>
-    </nav>
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="nav">
+    <a href="../index.html" class="nav-left">
+        ← BACK TO PORTFOLIO
+    </a>
+
+    <div class="nav-right">
+        JOSHUA WU · BIOENGINEERING
+    </div>
+</nav>
 
 
-    <!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
-    <header class="hero">
+<header class="hero">
 
-        <div class="eyebrow">
-            ACEBRACE · BIOMEDICAL DEVICE
+    <div class="eyebrow">
+        ACEBRACE · BIOMEDICAL DEVICE
+    </div>
+
+    <h1>
+        Engineering a smarter approach to knee support.
+    </h1>
+
+    <p class="hero-description">
+        AceBrace is a wearable knee-support system developed around
+        biomechanics, embedded electronics, real-time sensing, and
+        digital data tracking.
+    </p>
+
+    <div class="tags">
+        <span class="tag">Biomedical Device</span>
+        <span class="tag">Biomechanics</span>
+        <span class="tag">Wearable Technology</span>
+        <span class="tag">Embedded Systems</span>
+        <span class="tag">Product Development</span>
+        <span class="tag">Intellectual Property</span>
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO IMAGE
+========================= -->
+
+<div class="hero-image">
+
+    <img
+        src="../Screenshot 2026-09-24 225936.png"
+        alt="AceBrace design"
+    >
+
+    <div class="image-number">
+        ACEBRACE · DESIGN DEVELOPMENT
+    </div>
+
+</div>
+
+
+<!-- =========================
+     01 PROBLEM
+========================= -->
+
+<section class="section">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            01 / PROBLEM
         </div>
 
-        <h1>
-            Engineering a smarter approach to knee support.
-        </h1>
+        <div>
 
-        <p>
-            AceBrace is a wearable knee-support concept combining
-            biomechanics, embedded electronics, real-time sensing,
-            and software-based data tracking.
-        </p>
+            <h2 class="section-title">
+                A knee brace can do more than provide support.
+            </h2>
 
-        <div class="tags">
-
-            <span class="tag">
-                Biomedical Devices
-            </span>
-
-            <span class="tag">
-                Biomechanics
-            </span>
-
-            <span class="tag">
-                Wearable Technology
-            </span>
-
-            <span class="tag">
-                Embedded Systems
-            </span>
-
-            <span class="tag">
-                Product Development
-            </span>
-
-            <span class="tag">
-                Patent
-            </span>
-
-        </div>
-
-    </header>
-
-
-    <!-- PROBLEM -->
-
-    <section>
-
-        <div class="section-label">
-            01 · THE PROBLEM
-        </div>
-
-        <h2>
-            From a real clinical problem to an engineering concept.
-        </h2>
-
-        <p>
-            AceBrace began with a practical question: how could a
-            knee support provide more information about movement
-            and loading instead of functioning only as a passive brace?
-        </p>
-
-        <div class="highlight">
-
-            <p>
-                The project explored how wearable sensing could be
-                integrated into a knee-support system to monitor
-                movement and provide usable feedback.
+            <p class="section-text">
+                AceBrace began with a practical engineering question:
+                how could a knee-support system provide information
+                about movement and loading rather than functioning
+                only as a passive brace?
             </p>
 
         </div>
 
-    </section>
+    </div>
 
 
-    <!-- DESIGN DEVELOPMENT -->
+    <div class="problem-box">
 
-    <section>
-
-        <div class="section-label">
-            02 · DESIGN DEVELOPMENT
+        <div class="problem-large">
+            From physical support
+            to measurable movement.
         </div>
 
-        <h2>
-            Iterating from concept to physical prototype.
-        </h2>
+        <div class="problem-small">
+            The project explored how wearable sensing could be
+            integrated into a knee-support system to capture
+            movement and provide usable feedback to the wearer.
+        </div>
 
-        <p>
-            Multiple design iterations were developed to explore
-            the physical architecture of the brace, component
-            placement, and integration of sensing hardware.
-        </p>
+    </div>
+
+</section>
 
 
-        <div class="media-grid">
+<!-- =========================
+     02 DESIGN
+========================= -->
 
-            <!-- DESIGN 1 -->
+<section class="section">
 
-            <div class="media-card">
+    <div class="section-header">
 
-                <img
-                    src="../Screenshot 2026-09-24 225936.png"
-                    alt="AceBrace Design 1"
-                >
+        <div class="section-number">
+            02 / DESIGN
+        </div>
 
-                <div class="media-caption">
+        <div>
 
-                    <h3>
-                        Design 1
-                    </h3>
+            <h2 class="section-title">
+                Iterating from concept to physical prototype.
+            </h2>
 
-                    <p>
-                        Initial wearable architecture and component
-                        layout.
-                    </p>
+            <p class="section-text">
+                Multiple design iterations were developed to explore
+                the physical architecture of the brace, component
+                placement, and integration of sensing hardware.
+            </p>
 
+        </div>
+
+    </div>
+
+
+    <div class="media-grid">
+
+        <div class="media-card">
+
+            <img
+                src="../Screenshot 2026-09-24 225936.png"
+                alt="AceBrace Design 1"
+            >
+
+            <div class="media-caption">
+
+                <div class="media-caption-top">
+                    <span class="media-caption-number">01</span>
+                    <span class="media-caption-number">CONCEPT</span>
                 </div>
 
-            </div>
-
-
-            <!-- DESIGN 2 -->
-
-            <div class="media-card">
-
-                <img
-                    src="../Screenshot 2026-09-24 225926.png"
-                    alt="AceBrace Design 2"
-                >
-
-                <div class="media-caption">
-
-                    <h3>
-                        Design 2
-                    </h3>
-
-                    <p>
-                        Refined structural concept developed through
-                        iterative design.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- PROTOTYPE 1 -->
-
-            <div class="media-card">
-
-                <img
-                    src="../Screenshot 2026-09-24 225945.png"
-                    alt="AceBrace Prototype 1"
-                >
-
-                <div class="media-caption">
-
-                    <h3>
-                        Prototype 1
-                    </h3>
-
-                    <p>
-                        Physical prototype demonstrating the transition
-                        from digital design to hardware.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ELECTRONICS -->
-
-    <section>
-
-        <div class="section-label">
-            03 · ELECTRONICS
-        </div>
-
-        <h2>
-            Building the sensing hardware.
-        </h2>
-
-        <p>
-            The project progressed beyond the physical brace into
-            custom electronics and hardware integration. Components
-            were assembled and soldered onto a custom PCB to support
-            the sensing and data-collection system.
-        </p>
-
-
-        <div class="media-grid">
-
-            <div class="media-card">
-
-                <img
-                    src="../Screenshot 2026-09-24 231230.png"
-                    alt="AceBrace custom PCB and soldered electrical components"
-                >
-
-                <div class="media-caption">
-
-                    <h3>
-                        Custom PCB + Electronics
-                    </h3>
-
-                    <p>
-                        Custom circuit hardware and soldered electrical
-                        components used in the prototype system.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- DATA -->
-
-    <section>
-
-        <div class="section-label">
-            04 · REAL-TIME DATA
-        </div>
-
-        <h2>
-            Turning movement into usable data.
-        </h2>
-
-        <p>
-            AceBrace was designed to connect physical movement
-            with digital measurement. The prototype demonstrates
-            the collection and visualization of sensor data.
-        </p>
-
-
-        <div class="media-grid">
-
-
-            <!-- DATA DEMONSTRATION -->
-
-            <div class="media-card">
-
-                <video controls playsinline>
-
-                    <source
-                        src="../IMG_8945.mov"
-                        type="video/quicktime"
-                    >
-
-                    Your browser does not support this video format.
-
-                </video>
-
-                <div class="media-caption">
-
-                    <h3>
-                        Data Demonstration 1
-                    </h3>
-
-                    <p>
-                        Demonstration of the prototype's real-time
-                        data collection system.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- CUSTOM APP -->
-
-            <div class="media-card">
-
-                <img
-                    src="../IMG_9080.webp"
-                    alt="AceBrace custom app data tracking"
-                >
-
-                <div class="media-caption">
-
-                    <h3>
-                        Custom App
-                    </h3>
-
-                    <p>
-                        Sensor data visualized through a custom
-                        software interface.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ENGINEERING -->
-
-    <section>
-
-        <div class="section-label">
-            05 · ENGINEERING
-        </div>
-
-        <h2>
-            Hardware, software, and biomechanics in one system.
-        </h2>
-
-
-        <div class="grid">
-
-
-            <div class="card">
-
-                <h3>
-                    Biomechanics
-                </h3>
+                <h3>Initial Architecture</h3>
 
                 <p>
-                    The brace was developed around the mechanics
-                    of knee movement and the goal of understanding
-                    how external support interacts with motion.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    Embedded Hardware
-                </h3>
-
-                <p>
-                    Sensors and custom electronics were integrated
-                    into the physical prototype to capture
-                    movement data.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    Data Tracking
-                </h3>
-
-                <p>
-                    Collected measurements were connected to a
-                    software interface for real-time visualization
-                    and tracking.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>
-                    Product Development
-                </h3>
-
-                <p>
-                    The project progressed through multiple physical
-                    and digital iterations, moving from concept
-                    toward a functional prototype.
+                    Initial wearable architecture and component
+                    layout developed for the AceBrace concept.
                 </p>
 
             </div>
 
         </div>
 
-    </section>
 
+        <div class="media-card">
 
-    <!-- GRAND REVEAL: PATENT -->
+            <img
+                src="../Screenshot 2026-09-24 225926.png"
+                alt="AceBrace Design 2"
+            >
 
-    <section>
+            <div class="media-caption">
 
-        <div class="section-label">
-            06 · INTELLECTUAL PROPERTY
-        </div>
+                <div class="media-caption-top">
+                    <span class="media-caption-number">02</span>
+                    <span class="media-caption-number">ITERATION</span>
+                </div>
 
-        <h2>
-            From prototype to protected invention.
-        </h2>
+                <h3>Refined Design</h3>
 
-        <p>
-            The culmination of the AceBrace development process was
-            the transition from an engineering concept and prototype
-            into formal intellectual-property development.
-        </p>
+                <p>
+                    A refined structural concept developed through
+                    iterative design and component placement.
+                </p>
 
-
-        <div class="patent-card">
-
-            <div class="patent-label">
-                PROVISIONAL PATENT
             </div>
 
-            <h3>
-                AceBrace
+        </div>
+
+    </div>
+
+
+    <div class="media-full">
+
+        <img
+            src="../Screenshot 2026-09-24 225945.png"
+            alt="AceBrace physical prototype"
+        >
+
+        <div class="media-full-caption">
+
+            <div class="media-caption-number">
+                03 / PROTOTYPE
+            </div>
+
+            <h3 style="margin-top:10px;">
+                From digital design to physical hardware.
             </h3>
 
-            <p>
-                A provisional patent submission documenting the
-                invention and its underlying design and technical
-                concepts.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     03 ELECTRONICS
+========================= -->
+
+<section class="section">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            03 / ELECTRONICS
+        </div>
+
+        <div>
+
+            <h2 class="section-title">
+                Building the sensing hardware.
+            </h2>
+
+            <p class="section-text">
+                The project progressed beyond the physical brace
+                into custom electronics and hardware integration.
+                Components were assembled and soldered into the
+                prototype sensing system.
             </p>
 
-            <a
-                href="../Kami Export - Submission Receipt - Submissions - Patent Center - USPTO.pdf"
-                target="_blank"
-                class="button"
+        </div>
+
+    </div>
+
+
+    <div class="media-full">
+
+        <img
+            src="../Screenshot 2026-09-24 231230.png"
+            alt="AceBrace custom PCB and electrical components"
+        >
+
+        <div class="media-full-caption">
+
+            <div class="media-caption-number">
+                HARDWARE INTEGRATION
+            </div>
+
+            <h3 style="margin-top:10px;">
+                Custom electronics inside the prototype.
+            </h3>
+
+            <p style="color:#75817e; margin-top:8px; max-width:700px;">
+                Custom circuit hardware and soldered electrical
+                components used to support sensing and data collection.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     04 DATA
+========================= -->
+
+<section class="section">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            04 / DATA
+        </div>
+
+        <div>
+
+            <h2 class="section-title">
+                Turning movement into usable data.
+            </h2>
+
+            <p class="section-text">
+                AceBrace connects physical movement with digital
+                measurement, creating a pathway from wearable
+                sensing to real-time visualization.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="data-grid">
+
+        <div class="data-card">
+
+            <video controls playsinline>
+
+                <source
+                    src="../IMG_8945.mov"
+                    type="video/quicktime"
+                >
+
+                Your browser does not support this video format.
+
+            </video>
+
+            <div class="data-caption">
+
+                <h3>Real-Time Demonstration</h3>
+
+                <p>
+                    Demonstration of the prototype's data collection
+                    system.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="data-card">
+
+            <img
+                src="../IMG_9080.webp"
+                alt="AceBrace custom app"
             >
-                VIEW USPTO SUBMISSION →
-            </a>
+
+            <div class="data-caption">
+
+                <h3>Custom Software Interface</h3>
+
+                <p>
+                    Sensor information visualized through a custom
+                    software interface.
+                </p>
+
+            </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- COMMERCIALIZATION -->
+<!-- =========================
+     05 ENGINEERING
+========================= -->
 
-    <section>
+<section class="section">
 
-        <div class="section-label">
-            07 · COMMERCIALIZATION
+    <div class="section-header">
+
+        <div class="section-number">
+            05 / SYSTEM
         </div>
 
-        <h2>
-            Building toward the next stage.
-        </h2>
+        <div>
+
+            <h2 class="section-title">
+                Hardware, software, and biomechanics in one system.
+            </h2>
+
+            <p class="section-text">
+                AceBrace required the project to move across several
+                engineering disciplines rather than treating the
+                brace as a standalone mechanical product.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="system">
+
+        <div class="system-row">
+
+            <div class="system-number">01</div>
+
+            <div class="system-title">
+                Biomechanics
+            </div>
+
+            <div class="system-description">
+                Designing around knee movement and the interaction
+                between external support and motion.
+            </div>
+
+        </div>
+
+
+        <div class="system-row">
+
+            <div class="system-number">02</div>
+
+            <div class="system-title">
+                Embedded Hardware
+            </div>
+
+            <div class="system-description">
+                Integrating sensors and custom electronics into
+                the physical prototype.
+            </div>
+
+        </div>
+
+
+        <div class="system-row">
+
+            <div class="system-number">03</div>
+
+            <div class="system-title">
+                Data Tracking
+            </div>
+
+            <div class="system-description">
+                Connecting collected measurements to a software
+                interface for visualization and tracking.
+            </div>
+
+        </div>
+
+
+        <div class="system-row">
+
+            <div class="system-number">04</div>
+
+            <div class="system-title">
+                Product Development
+            </div>
+
+            <div class="system-description">
+                Moving through physical and digital iterations
+                toward a functional prototype.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     06 PATENT
+========================= -->
+
+<section class="section patent-section">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            06 / INTELLECTUAL PROPERTY
+        </div>
+
+        <div>
+
+            <h2 class="section-title">
+                From prototype to protected invention.
+            </h2>
+
+            <p class="section-text">
+                The engineering process ultimately moved beyond
+                concept development and into formal intellectual
+                property development.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="patent-box">
+
+        <div class="patent-label">
+            PROVISIONAL PATENT
+        </div>
+
+        <h3>
+            ACEBRACE
+        </h3>
+
+        <p>
+            A provisional patent submission documenting the invention
+            and its underlying design and technical concepts.
+        </p>
+
+        <a
+            href="../Kami Export - Submission Receipt - Submissions - Patent Center - USPTO.pdf"
+            target="_blank"
+            class="button"
+        >
+            VIEW USPTO SUBMISSION →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     07 COMMERCIALIZATION
+========================= -->
+
+<section class="section">
+
+    <div class="section-header">
+
+        <div class="section-number">
+            07 / NEXT STAGE
+        </div>
+
+        <div>
+
+            <h2 class="section-title">
+                Building toward commercialization.
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="commercial">
+
+        <h3>
+            Moving the project beyond the prototype.
+        </h3>
 
         <p>
             I am currently working toward securing funding from
             investors in Taiwan while exploring licensing and
             commercialization opportunities with Billion's Century
             Incorporated, an orthopedic brace manufacturer.
+            <br><br>
+            The next stage is connecting the engineering work with
+            manufacturing, investment, and real-world orthopedic
+            applications.
         </p>
 
-        <div class="highlight">
+    </div>
 
-            <p>
-                The goal is to move AceBrace beyond a prototype by
-                connecting the engineering work with manufacturing,
-                investment, and real-world orthopedic applications.
-            </p>
-
-        </div>
-
-    </section>
+</section>
 
 
-    <!-- PRESENTATION -->
+<!-- =========================
+     FOOTER
+========================= -->
 
-    <section>
+<footer>
 
-        <div class="section-label">
-            08 · PRESENTATION
-        </div>
+    <span>
+        © 2026 Joshua Wu
+    </span>
 
-        <h2>
-            Communicating the engineering.
-        </h2>
+    <span>
+        UCLA BIOENGINEERING · ACEBRACE
+    </span>
 
-        <p>
-            AceBrace has been developed not only as a device concept,
-            but as a project requiring technical communication,
-            external feedback, and continued development.
-        </p>
+</footer>
 
-        <a
-            href="../index.html"
-            class="button"
-        >
-            ← BACK TO PORTFOLIO
-        </a>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        © 2026 Joshua Wu · UCLA Bioengineering
-
-    </footer>
+</div>
 
 </body>
 </html>
