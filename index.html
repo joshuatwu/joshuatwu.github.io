@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Joshua Wu | Bioengineering</title>
+    <title>Joshua Wu | Bioengineering · Research · Innovation</title>
 
-    <meta name="description"
-          content="Joshua Wu - UCLA Bioengineering undergraduate focused on therapeutics, protein engineering, computational biology, and biomedical innovation.">
+    <meta
+        name="description"
+        content="Joshua Wu is a UCLA Bioengineering student working across biotechnology, biomedical engineering, computational biology, and therapeutic development."
+    >
 
     <style>
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
 
         * {
             box-sizing: border-box;
@@ -24,9 +29,9 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #0a0a0a;
-            color: #f5f5f5;
-            line-height: 1.6;
+            background: #070b10;
+            color: #f2f5f7;
+            line-height: 1.7;
         }
 
         a {
@@ -34,167 +39,408 @@
             text-decoration: none;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 0 28px;
+        img {
+            max-width: 100%;
         }
 
-        /* NAVIGATION */
+        .page {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
 
         nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #222;
-        }
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 28px 0;
 
-        .nav-inner {
-            height: 70px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+
+            border-bottom: 1px solid #1b2630;
         }
 
-        .logo {
-            font-weight: 700;
-            letter-spacing: -0.5px;
+        .nav-name {
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-name span {
+            color: #7ee7c8;
         }
 
         .nav-links {
             display: flex;
             gap: 28px;
-            color: #aaa;
-            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: #7e8d99;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: color .2s ease;
         }
 
         .nav-links a:hover {
-            color: white;
+            color: #7ee7c8;
         }
 
-        /* HERO */
+        /* =========================================================
+           HERO
+        ========================================================= */
 
         .hero {
-            min-height: 80vh;
+            width: 90%;
+            max-width: 1200px;
+            min-height: 88vh;
+            margin: auto;
+
             display: flex;
-            align-items: center;
-            border-bottom: 1px solid #222;
+            flex-direction: column;
+            justify-content: center;
+
+            padding: 100px 0;
+
+            position: relative;
+        }
+
+        .hero::after {
+            content: "BIO";
+            position: absolute;
+
+            right: -100px;
+            bottom: 30px;
+
+            font-size: clamp(150px, 28vw, 390px);
+            font-weight: 800;
+            line-height: .8;
+
+            color: #0c1218;
+
+            z-index: -1;
+            pointer-events: none;
         }
 
         .eyebrow {
-            color: #888;
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
+            color: #7ee7c8;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
         }
 
-        h1 {
-            font-size: clamp(50px, 8vw, 92px);
-            line-height: 0.95;
+        .hero h1 {
+            max-width: 1050px;
+
+            font-size: clamp(58px, 9vw, 125px);
+            line-height: .91;
             letter-spacing: -5px;
-            max-width: 900px;
+
+            margin-bottom: 38px;
+        }
+
+        .hero h1 span {
+            color: #7ee7c8;
         }
 
         .hero-description {
-            margin-top: 30px;
-            max-width: 650px;
-            color: #aaa;
-            font-size: 20px;
+            max-width: 720px;
+
+            color: #9ba9b5;
+            font-size: 19px;
+            line-height: 1.8;
         }
 
-        .buttons {
-            margin-top: 35px;
+        .hero-description strong {
+            color: #e6ecef;
+            font-weight: normal;
+        }
+
+        .hero-links {
             display: flex;
             gap: 12px;
+            margin-top: 35px;
             flex-wrap: wrap;
         }
 
-        .button {
-            padding: 12px 20px;
-            border: 1px solid #444;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: 0.2s ease;
+        .hero-button {
+            border: 1px solid #2a3b48;
+            padding: 12px 17px;
+
+            font-size: 11px;
+            letter-spacing: 1.5px;
+
+            color: #a7b7c2;
+
+            transition: all .25s ease;
         }
 
-        .button.primary {
-            background: white;
-            color: black;
-            border-color: white;
+        .hero-button:hover {
+            border-color: #7ee7c8;
+            color: #7ee7c8;
         }
 
-        .button:hover {
-            transform: translateY(-2px);
+        .hero-button.primary {
+            border-color: #7ee7c8;
+            color: #7ee7c8;
         }
 
-        /* SECTIONS */
+        /* =========================================================
+           INTRO STRIP
+        ========================================================= */
+
+        .intro-strip {
+            border-top: 1px solid #1c2832;
+            border-bottom: 1px solid #1c2832;
+
+            padding: 28px 0;
+        }
+
+        .intro-strip .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat {
+            border-left: 1px solid #26333e;
+            padding-left: 20px;
+        }
+
+        .stat-number {
+            color: #7ee7c8;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .stat-text {
+            color: #7d8a95;
+            font-size: 12px;
+        }
+
+        /* =========================================================
+           GENERAL SECTIONS
+        ========================================================= */
 
         section {
-            padding: 100px 0;
-            border-bottom: 1px solid #222;
+            padding: 150px 0;
         }
 
         .section-label {
-            color: #666;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            color: #7ee7c8;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2.5px;
+            margin-bottom: 18px;
         }
 
-        h2 {
-            font-size: 42px;
-            letter-spacing: -2px;
-            margin-bottom: 30px;
+        section h2 {
+            max-width: 900px;
+
+            font-size: clamp(38px, 6vw, 72px);
+            line-height: 1;
+            letter-spacing: -3px;
+
+            margin-bottom: 25px;
+        }
+
+        .section-intro {
+            max-width: 720px;
+
+            color: #8997a3;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+
+            margin-top: 70px;
+        }
+
+        .about-large {
+            font-size: clamp(25px, 3vw, 39px);
+            line-height: 1.25;
+            letter-spacing: -1px;
+        }
+
+        .about-large span {
+            color: #7ee7c8;
         }
 
         .about-text {
-            max-width: 800px;
-            color: #aaa;
-            font-size: 19px;
+            color: #84919c;
+            font-size: 15px;
+            line-height: 1.9;
         }
 
-        /* PROJECTS */
+        .about-text p + p {
+            margin-top: 20px;
+        }
 
-        .projects {
+        /* =========================================================
+           RESEARCH
+        ========================================================= */
+
+        #research {
+            background: #080d12;
+            border-top: 1px solid #17212a;
+            border-bottom: 1px solid #17212a;
+        }
+
+        .research-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 18px;
+
+            margin-top: 65px;
         }
 
-        .project {
+        .research-card {
+            border: 1px solid #1e2b35;
+            background: #0b1117;
+
+            padding: 35px;
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            border-color: #526e68;
+        }
+
+        .research-number {
+            color: #7ee7c8;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .research-card h3 {
+            font-size: 25px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .research-card p {
+            color: #7f8c97;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .research-link {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            color: #7ee7c8;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+        }
+
+        /* =========================================================
+           ENGINEERING / ACEBRACE
+        ========================================================= */
+
+        .project-featured {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+
+            margin-top: 60px;
+
+            background: #0b1117;
+            border: 1px solid #1e2b35;
+
+            overflow: hidden;
+
+            transition:
+                transform .3s ease,
+                border-color .3s ease;
+        }
+
+        .project-featured:hover {
+            transform: translateY(-6px);
+            border-color: #7ee7c8;
+        }
+
+        .project-image {
+            min-height: 540px;
+
+            background: #080d11;
+
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
             display: block;
-            border: 1px solid #292929;
-            border-radius: 10px;
-            padding: 28px;
-            background: #101010;
-            transition: 0.2s ease;
-            cursor: pointer;
+
+            transition: transform .5s ease;
         }
 
-        .project:hover {
-            transform: translateY(-4px);
-            border-color: #555;
+        .project-featured:hover .project-image img {
+            transform: scale(1.035);
+        }
+
+        .project-content {
+            padding: 55px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .project-number {
-            color: #666;
-            font-size: 13px;
-            margin-bottom: 35px;
-        }
+            color: #7ee7c8;
 
-        .project h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
 
-        .project p {
-            color: #999;
-            font-size: 15px;
             margin-bottom: 20px;
+        }
+
+        .project-content h3 {
+            font-size: clamp(42px, 5vw, 65px);
+            line-height: 1;
+
+            margin-bottom: 25px;
+
+            letter-spacing: -2px;
+        }
+
+        .project-content p {
+            color: #8997a3;
+
+            font-size: 15px;
+            line-height: 1.8;
+
+            margin-bottom: 25px;
         }
 
         .tags {
@@ -204,215 +450,569 @@
         }
 
         .tag {
-            border: 1px solid #333;
-            padding: 5px 9px;
-            border-radius: 4px;
-            color: #888;
-            font-size: 12px;
+            border: 1px solid #293b47;
+
+            color: #8e9eaa;
+
+            padding: 6px 9px;
+
+            font-size: 10px;
+            letter-spacing: .5px;
         }
 
-        /* EXPERIENCE */
+        .project-link {
+            margin-top: 32px;
 
-        .experience {
-            border-top: 1px solid #292929;
+            color: #7ee7c8;
+
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
         }
 
-        .experience-item {
+        /* =========================================================
+           OTHER PROJECTS
+        ========================================================= */
+
+        .projects-grid {
             display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 30px;
-            padding: 28px 0;
-            border-bottom: 1px solid #222;
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 18px;
+
+            margin-top: 65px;
         }
 
-        .experience-date {
-            color: #666;
+        .project-card {
+            background: #0b1117;
+
+            border: 1px solid #1e2b35;
+
+            padding: 35px;
+
+            min-height: 300px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #526e68;
+        }
+
+        .project-card-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .project-type {
+            color: #7ee7c8;
+
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .project-year {
+            color: #53616c;
+            font-size: 10px;
+        }
+
+        .project-card h3 {
+            font-size: 28px;
+            margin: 25px 0 12px;
+        }
+
+        .project-card p {
+            color: #7e8b96;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .project-card-link {
+            margin-top: 30px;
+
+            color: #7ee7c8;
+
+            font-size: 10px;
+            letter-spacing: 1.5px;
+        }
+
+        /* =========================================================
+           DIRECTION
+        ========================================================= */
+
+        #direction {
+            background: #080d12;
+
+            border-top: 1px solid #17212a;
+            border-bottom: 1px solid #17212a;
+        }
+
+        .direction-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 100px;
+
+            margin-top: 65px;
+        }
+
+        .direction-main {
+            font-size: clamp(27px, 4vw, 48px);
+
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .direction-main span {
+            color: #7ee7c8;
+        }
+
+        .direction-list {
+            border-top: 1px solid #26323c;
+        }
+
+        .direction-item {
+            padding: 20px 0;
+
+            border-bottom: 1px solid #26323c;
+
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            color: #8996a1;
+
             font-size: 14px;
         }
 
-        .experience h3 {
-            font-size: 21px;
-            margin-bottom: 4px;
+        .direction-item span:last-child {
+            color: #596873;
         }
 
-        .experience-company {
-            color: #888;
-            margin-bottom: 12px;
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact {
+            text-align: center;
+            padding: 180px 0;
         }
 
-        .experience p {
-            color: #999;
-            max-width: 700px;
+        .contact h2 {
+            margin-left: auto;
+            margin-right: auto;
+
+            font-size: clamp(45px, 8vw, 100px);
         }
 
-        /* INTERESTS */
+        .contact p {
+            max-width: 600px;
+            margin: 0 auto;
 
-        .interests {
+            color: #84919c;
+        }
+
+        .contact-links {
             display: flex;
+            justify-content: center;
+            gap: 12px;
+
+            margin-top: 35px;
             flex-wrap: wrap;
-            gap: 10px;
         }
 
-        .interest {
-            padding: 10px 15px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            color: #aaa;
+        .contact-button {
+            border: 1px solid #293b47;
+
+            padding: 13px 20px;
+
+            color: #91a1ad;
+
+            font-size: 11px;
+            letter-spacing: 1.5px;
+
+            transition: all .25s ease;
         }
 
-        /* FOOTER */
+        .contact-button:hover {
+            border-color: #7ee7c8;
+            color: #7ee7c8;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
 
         footer {
-            padding: 50px 0;
-            color: #666;
-            font-size: 14px;
+            width: 90%;
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 35px 0 50px;
+
+            border-top: 1px solid #1b2630;
+
+            display: flex;
+            justify-content: space-between;
+
+            color: #56636e;
+
+            font-size: 11px;
+            letter-spacing: 1px;
         }
 
-        /* MOBILE */
+        /* =========================================================
+           MOBILE
+        ========================================================= */
 
-        @media (max-width: 700px) {
+        @media (max-width: 800px) {
+
+            nav {
+                width: 88%;
+            }
 
             .nav-links {
                 display: none;
             }
 
-            h1 {
+            .container,
+            .hero,
+            footer {
+                width: 88%;
+            }
+
+            .hero {
+                min-height: 78vh;
+                padding: 80px 0;
+            }
+
+            .hero h1 {
+                font-size: 57px;
                 letter-spacing: -3px;
             }
 
             .hero-description {
-                font-size: 17px;
+                font-size: 16px;
             }
 
-            .projects {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-item {
-                grid-template-columns: 1fr;
-                gap: 5px;
+            .intro-strip .container {
+                grid-template-columns: 1fr 1fr;
             }
 
             section {
-                padding: 70px 0;
+                padding: 100px 0;
             }
 
+            section h2 {
+                font-size: 42px;
+                letter-spacing: -2px;
+            }
+
+            .about-grid,
+            .direction-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .research-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-featured {
+                grid-template-columns: 1fr;
+            }
+
+            .project-image {
+                min-height: 330px;
+            }
+
+            .project-content {
+                padding: 35px 28px;
+            }
+
+            .project-content h3 {
+                font-size: 45px;
+            }
+
+            .contact {
+                padding: 120px 0;
+            }
+
+            footer {
+                display: block;
+            }
+
+            footer div + div {
+                margin-top: 10px;
+            }
         }
 
     </style>
 </head>
 
+
 <body>
 
-    <!-- NAVIGATION -->
+<div class="page">
 
-    <nav>
-        <div class="container nav-inner">
 
-            <div class="logo">
-                JW
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav>
+
+    <a href="index.html" class="nav-name">
+        JOSHUA <span>WU</span>
+    </a>
+
+    <div class="nav-links">
+
+        <a href="#about">
+            ABOUT
+        </a>
+
+        <a href="#research">
+            RESEARCH
+        </a>
+
+        <a href="#engineering">
+            ENGINEERING
+        </a>
+
+        <a href="#projects">
+            PROJECTS
+        </a>
+
+        <a href="#contact">
+            CONTACT
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<header class="hero">
+
+    <div class="eyebrow">
+        UCLA BIOENGINEERING · RESEARCH · INNOVATION
+    </div>
+
+    <h1>
+        Building at the intersection of
+        <span>biology</span> and engineering.
+    </h1>
+
+    <p class="hero-description">
+
+        I am a UCLA Bioengineering student interested in
+        <strong>therapeutics, biotechnology, biomedical devices,
+        and computational biology</strong>.
+
+        My work spans protein engineering, drug-development research,
+        biomedical device design, and computational approaches to
+        understanding biology.
+
+    </p>
+
+    <div class="hero-links">
+
+        <a href="#research" class="hero-button primary">
+            EXPLORE MY WORK →
+        </a>
+
+        <a href="#about" class="hero-button">
+            ABOUT ME
+        </a>
+
+        <a href="#contact" class="hero-button">
+            GET IN TOUCH
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     QUICK OVERVIEW
+========================================================= -->
+
+<div class="intro-strip">
+
+    <div class="container">
+
+        <div class="stat">
+
+            <div class="stat-number">
+                UCLA
             </div>
 
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#research">Research</a>
-                <a href="#engineering">Engineering</a>
-                <a href="#experience">Experience</a>
-                <a href="#contact">Contact</a>
+            <div class="stat-text">
+                Bioengineering
             </div>
 
         </div>
-    </nav>
 
 
-    <!-- HERO -->
+        <div class="stat">
 
-    <header class="hero">
-
-        <div class="container">
-
-            <div class="eyebrow">
-                UCLA Bioengineering · Los Angeles
+            <div class="stat-number">
+                RESEARCH
             </div>
 
-            <h1>
-                Engineering biology<br>
-                into therapeutics.
-            </h1>
+            <div class="stat-text">
+                Protein · RNA · Cancer Biology
+            </div>
 
-            <p class="hero-description">
-                I'm Joshua Wu, a bioengineering undergraduate interested
-                in protein engineering, computational biology, drug
-                development, and biomedical innovation.
-            </p>
+        </div>
 
-            <div class="buttons">
 
-                <a class="button primary" href="#research">
-                    Explore my work
-                </a>
+        <div class="stat">
 
-                <a class="button" href="Joshua_Wu_Resume.pdf">
-                    Resume
-                </a>
+            <div class="stat-number">
+                ENGINEERING
+            </div>
+
+            <div class="stat-text">
+                Biomedical Devices · Wearables
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                FOCUS
+            </div>
+
+            <div class="stat-text">
+                Therapeutics & Innovation
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-label">
+            01 · ABOUT
+        </div>
+
+        <h2>
+            Engineering with a biological problem in mind.
+        </h2>
+
+        <p class="section-intro">
+            I am interested in the space where biological understanding
+            becomes something that can actually be engineered, tested,
+            and eventually used.
+        </p>
+
+
+        <div class="about-grid">
+
+            <div class="about-large">
+
+                My goal is to work on technologies that improve our
+                understanding and <span>application of therapeutics</span>
+                for treating and preventing disease.
+
+            </div>
+
+
+            <div class="about-text">
+
+                <p>
+                    My experience has taken me from computational protein
+                    modeling and RNA analysis to experimental cancer
+                    research and biomedical device development.
+                </p>
+
+                <p>
+                    I enjoy projects where the problem is not completely
+                    defined yet, because they require learning across
+                    disciplines rather than staying inside one technical
+                    box.
+                </p>
+
+                <p>
+                    Long term, I want to help build biotechnology that
+                    can move from research into real-world applications.
+                </p>
 
             </div>
 
         </div>
 
-    </header>
+    </div>
+
+</section>
 
 
-    <!-- ABOUT -->
+<!-- =========================================================
+     RESEARCH
+========================================================= -->
 
-    <section id="about">
+<section id="research">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-label">
-                01 · About
-            </div>
-
-            <h2>
-                Biology × Engineering
-            </h2>
-
-            <p class="about-text">
-                My work sits at the intersection of biological research,
-                computational tools, and engineering. I've worked on
-                protein design, structural biology, cancer research,
-                RNA bioinformatics, and biomedical device development.
-                I'm particularly interested in translating biological
-                discoveries into practical therapies and technologies.
-            </p>
-
+        <div class="section-label">
+            02 · RESEARCH
         </div>
 
-    </section>
+        <h2>
+            Research across biology, computation, and therapeutics.
+        </h2>
+
+        <p class="section-intro">
+            My research experience has centered on using computational
+            and experimental tools to understand proteins, RNA, cancer
+            biology, and potential therapeutic strategies.
+        </p>
 
 
-    <!-- RESEARCH -->
+        <div class="research-grid">
 
-    <section id="research">
 
-        <div class="container">
+            <!-- IL10 -->
 
-            <div class="section-label">
-                02 · Research
-            </div>
+            <a
+                href="projects/il10.html"
+                class="research-card"
+            >
 
-            <h2>
-                Selected work
-            </h2>
+                <div>
 
-            <div class="projects">
-
-                <!-- PROJECT 1 -->
-
-                <a class="project" href="projects/il10.html">
-
-                    <div class="project-number">
-                        01 / PROTEIN ENGINEERING
+                    <div class="research-number">
+                        01 · PROTEIN ENGINEERING
                     </div>
 
                     <h3>
@@ -420,26 +1020,31 @@
                     </h3>
 
                     <p>
-                        Computational investigation of IL-10 variants
-                        for improved thermostability while preserving
-                        receptor interactions.
+                        Engineering IL-10 thermostability using
+                        computational protein design and structure-based
+                        analysis while considering receptor binding.
                     </p>
 
-                    <div class="tags">
-                        <span class="tag">ThermoMPNN</span>
-                        <span class="tag">ESM</span>
-                        <span class="tag">AlphaFold</span>
-                    </div>
+                </div>
 
-                </a>
+                <div class="research-link">
+                    VIEW PROJECT →
+                </div>
+
+            </a>
 
 
-                <!-- PROJECT 2 -->
+            <!-- PROTEOMICS -->
 
-                <a class="project" href="projects/uci-proteomics.html">
+            <a
+                href="projects/uci-proteomics.html"
+                class="research-card"
+            >
 
-                    <div class="project-number">
-                        02 / STRUCTURAL BIOLOGY
+                <div>
+
+                    <div class="research-number">
+                        02 · STRUCTURAL BIOLOGY
                     </div>
 
                     <h3>
@@ -447,25 +1052,31 @@
                     </h3>
 
                     <p>
-                        Structural modeling and analysis of viral protein
-                        complexes using AlphaFold3, ChimeraX, and PyMOL.
+                        Computational analysis of protein complexes
+                        using AlphaFold3, ChimeraX, and PyMOL to
+                        investigate structural interactions.
                     </p>
 
-                    <div class="tags">
-                        <span class="tag">AlphaFold3</span>
-                        <span class="tag">PyMOL</span>
-                        <span class="tag">ChimeraX</span>
-                    </div>
+                </div>
 
-                </a>
+                <div class="research-link">
+                    VIEW PROJECT →
+                </div>
+
+            </a>
 
 
-                <!-- PROJECT 3 -->
+            <!-- RNA -->
 
-                <a class="project" href="projects/rna-analysis.html">
+            <a
+                href="projects/rna-analysis.html"
+                class="research-card"
+            >
 
-                    <div class="project-number">
-                        03 / BIOINFORMATICS
+                <div>
+
+                    <div class="research-number">
+                        03 · RNA BIOLOGY
                     </div>
 
                     <h3>
@@ -473,195 +1084,429 @@
                     </h3>
 
                     <p>
-                        Nanopore sequencing analysis of RNA modifications
-                        across mouse skeletal muscle tissues.
+                        Nanopore sequencing and computational analysis
+                        to investigate RNA modifications and their
+                        relationship to muscle biology.
                     </p>
 
-                    <div class="tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">IGV</span>
-                        <span class="tag">Nanopore</span>
-                    </div>
+                </div>
 
-                </a>
+                <div class="research-link">
+                    VIEW PROJECT →
+                </div>
+
+            </a>
 
 
-                <!-- PROJECT 4 -->
+            <!-- SCFA -->
 
-                <a class="project" href="projects/scfa.html">
+            <a
+                href="projects/scfa.html"
+                class="research-card"
+            >
 
-                    <div class="project-number">
-                        04 / CANCER BIOLOGY
+                <div>
+
+                    <div class="research-number">
+                        04 · CANCER BIOLOGY
                     </div>
 
                     <h3>
-                        SCFA Cancer Research
+                        SCFA & Cancer Research
                     </h3>
 
                     <p>
                         Experimental investigation of short-chain fatty
-                        acids using soft agar and SRB assays. Coming soon: presentation of experimental cancer research
-    at the Society of Toxicology on behalf of Western University
-    of Health Sciences.
+                        acids and their effects on cellular viability
+                        and anchorage-independent growth.
                     </p>
 
-                    <div class="tags">
-                        <span class="tag">Cell Culture</span>
-                        <span class="tag">Soft Agar</span>
-                        <span class="tag">SRB</span>
-                    </div>
+                </div>
 
-                </a>
+                <div class="research-link">
+                    VIEW PROJECT →
+                </div>
 
-            </div>
+            </a>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ENGINEERING -->
+<!-- =========================================================
+     ENGINEERING
+========================================================= -->
 
-    <section id="engineering">
+<section id="engineering">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-label">
-                03 · Engineering
+        <div class="section-label">
+            03 · ENGINEERING
+        </div>
+
+        <h2>
+            Building beyond the lab.
+        </h2>
+
+        <p class="section-intro">
+            Engineering projects where biology, hardware, software,
+            and product development come together.
+        </p>
+
+
+        <!-- FEATURED ACEBRACE -->
+
+        <a
+            class="project-featured"
+            href="projects/acebrace.html"
+        >
+
+            <div class="project-image">
+
+                <img
+                    src="Screenshot 2026-09-24 225936.png"
+                    alt="AceBrace biomedical device design"
+                >
+
             </div>
 
-            <h2>
-                Building beyond the lab.
-            </h2>
 
-           <a class="project" href="projects/acebrace.html">
+            <div class="project-content">
 
                 <div class="project-number">
                     ACEBRACE · BIOMEDICAL DEVICE
-                </a>
+                </div>
 
                 <h3>
                     AceBrace
                 </h3>
 
                 <p>
-                    A knee-support concept developed around the intersection
-                    of biomechanics, wearable sensing, and injury prevention.
-                    The project grew from a real-world clinical problem into
-                    an engineered biomedical device concept.
+                    A knee-support concept developed around the
+                    intersection of biomechanics, wearable sensing,
+                    and injury prevention.
+
+                    The project grew from a real-world clinical
+                    problem into an engineered biomedical device
+                    concept involving physical design, electronics,
+                    data tracking, and intellectual property.
                 </p>
 
+
                 <div class="tags">
-                    <span class="tag">Biomedical Devices</span>
-                    <span class="tag">Biomechanics</span>
-                    <span class="tag">Product Development</span>
-                    <span class="tag">Patent</span>
+
+                    <span class="tag">
+                        Biomedical Devices
+                    </span>
+
+                    <span class="tag">
+                        Biomechanics
+                    </span>
+
+                    <span class="tag">
+                        Wearable Technology
+                    </span>
+
+                    <span class="tag">
+                        Product Development
+                    </span>
+
+                    <span class="tag">
+                        Patent
+                    </span>
+
+                </div>
+
+
+                <div class="project-link">
+                    VIEW ACEBRACE PROJECT →
                 </div>
 
             </div>
 
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SELECTED PROJECTS
+========================================================= -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <div class="section-label">
+            04 · SELECTED WORK
         </div>
 
-    </section>
+        <h2>
+            Projects beyond the research bench.
+        </h2>
+
+        <p class="section-intro">
+            A selection of projects spanning computational biology,
+            protein engineering, biomedical technology, and
+            scientific communication.
+        </p>
 
 
-    <!-- EXPERIENCE -->
+        <div class="projects-grid">
 
-    <section id="experience">
 
-        <div class="container">
+            <!-- iGEM -->
 
-            <div class="section-label">
-                04 · Experience
-            </div>
+            <div class="project-card">
 
-            <h2>
-                Where I've worked
-            </h2>
+                <div>
 
-            <div class="experience">
+                    <div class="project-card-top">
 
-                <!-- UCI -->
-
-                <div class="experience-item">
-
-                    <div class="experience-date">
-                        Research
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Proteomics & Structural Biology
-                        </h3>
-
-                        <div class="experience-company">
-                            University of California, Irvine
+                        <div class="project-type">
+                            SYNTHETIC BIOLOGY
                         </div>
 
-                        <p>
-                            Computational protein structure prediction,
-                            structural analysis, and protein complex modeling.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CITY OF HOPE -->
-
-                <div class="experience-item">
-
-                    <div class="experience-date">
-                        Research
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Protein Engineering
-                        </h3>
-
-                        <div class="experience-company">
-                            City of Hope
+                        <div class="project-year">
+                            iGEM
                         </div>
 
-                        <p>
-                            Protein engineering and computational design
-                            focused on improving IL-10 thermostability.
-                        </p>
-
                     </div>
+
+                    <h3>
+                        Protein Design
+                    </h3>
+
+                    <p>
+                        Led a 20+ member protein design team working
+                        on IL-10 thermostability using computational
+                        design and structure prediction.
+                    </p>
 
                 </div>
 
+                <div class="project-card-link">
+                    RESEARCH EXPERIENCE
+                </div>
 
-                <!-- CSUF -->
+            </div>
 
-                <div class="experience-item">
 
-                    <div class="experience-date">
-                        Research
-                    </div>
+            <!-- ACEBRACE / INVENTION -->
 
-                    <div>
+            <div class="project-card">
 
-                        <h3>
-                            Intelligent Computing & Cancer Research
-                        </h3>
+                <div>
 
-                        <div class="experience-company">
-                            California State University, Fullerton
+                    <div class="project-card-top">
+
+                        <div class="project-type">
+                            INVENTION
                         </div>
 
-                        <p>
-                            Computational and experimental approaches to
-                            biomedical research, including cancer imaging
-                            and molecular biology.
-                        </p>
+                        <div class="project-year">
+                            ACEBRACE
+                        </div>
 
                     </div>
+
+                    <h3>
+                        Biomedical Device Development
+                    </h3>
+
+                    <p>
+                        Developed a wearable knee-support concept
+                        progressing from physical design to sensing
+                        hardware, software tracking, and patent
+                        development.
+                    </p>
+
+                </div>
+
+                <div class="project-card-link">
+                    FEATURED ABOVE
+                </div>
+
+            </div>
+
+
+            <!-- COMPUTATIONAL BIOLOGY -->
+
+            <div class="project-card">
+
+                <div>
+
+                    <div class="project-card-top">
+
+                        <div class="project-type">
+                            COMPUTATIONAL BIOLOGY
+                        </div>
+
+                        <div class="project-year">
+                            PYTHON · AI
+                        </div>
+
+                    </div>
+
+                    <h3>
+                        Computational Biology
+                    </h3>
+
+                    <p>
+                        Experience working with AlphaFold,
+                        nanopore sequencing, sequence analysis,
+                        molecular visualization, and biological
+                        datasets.
+                    </p>
+
+                </div>
+
+                <div class="project-card-link">
+                    VIEW RESEARCH →
+                </div>
+
+            </div>
+
+
+            <!-- SCIENTIFIC COMMUNICATION -->
+
+            <div class="project-card">
+
+                <div>
+
+                    <div class="project-card-top">
+
+                        <div class="project-type">
+                            COMMUNICATION
+                        </div>
+
+                        <div class="project-year">
+                            PRESENTATIONS
+                        </div>
+
+                    </div>
+
+                    <h3>
+                        Scientific Communication
+                    </h3>
+
+                    <p>
+                        Translating technical research into posters,
+                        presentations, reports, and public-facing
+                        scientific communication.
+                    </p>
+
+                </div>
+
+                <div class="project-card-link">
+                    SELECTED WORK
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DIRECTION
+========================================================= -->
+
+<section id="direction">
+
+    <div class="container">
+
+        <div class="section-label">
+            05 · DIRECTION
+        </div>
+
+        <h2>
+            Where I want to take this.
+        </h2>
+
+
+        <div class="direction-grid">
+
+            <div class="direction-main">
+
+                I want to help build the next generation of
+                <span>biotechnology and therapeutics.</span>
+
+            </div>
+
+
+            <div class="direction-list">
+
+                <div class="direction-item">
+
+                    <span>
+                        Therapeutic Development
+                    </span>
+
+                    <span>
+                        01
+                    </span>
+
+                </div>
+
+
+                <div class="direction-item">
+
+                    <span>
+                        Drug Delivery
+                    </span>
+
+                    <span>
+                        02
+                    </span>
+
+                </div>
+
+
+                <div class="direction-item">
+
+                    <span>
+                        Protein Engineering
+                    </span>
+
+                    <span>
+                        03
+                    </span>
+
+                </div>
+
+
+                <div class="direction-item">
+
+                    <span>
+                        Biomedical Devices
+                    </span>
+
+                    <span>
+                        04
+                    </span>
+
+                </div>
+
+
+                <div class="direction-item">
+
+                    <span>
+                        Biotechnology Innovation
+                    </span>
+
+                    <span>
+                        05
+                    </span>
 
                 </div>
 
@@ -669,120 +1514,84 @@
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- INTERESTS -->
+<!-- =========================================================
+     CONTACT
+========================================================= -->
 
-    <section>
+<section id="contact" class="contact">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="section-label">
-                05 · Interests
-            </div>
+        <div class="section-label">
+            06 · CONTACT
+        </div>
 
-            <h2>
-                What I'm exploring
-            </h2>
+        <h2>
+            Let's build something useful.
+        </h2>
 
-            <div class="interests">
+        <p>
+            I am always interested in meeting researchers, engineers,
+            founders, and people working on difficult problems in
+            biotechnology and biomedical engineering.
+        </p>
 
-                <span class="interest">
-                    Protein Engineering
-                </span>
 
-                <span class="interest">
-                    Drug Discovery
-                </span>
+        <div class="contact-links">
 
-                <span class="interest">
-                    Drug Delivery
-                </span>
+            <a
+                href="mailto:joshuawu14@g.ucla.edu"
+                class="contact-button"
+            >
+                EMAIL
+            </a>
 
-                <span class="interest">
-                    Computational Biology
-                </span>
+            <a
+                href="https://www.linkedin.com/in/joshua-wu-148aa1389/"
+                target="_blank"
+                class="contact-button"
+            >
+                LINKEDIN
+            </a>
 
-                <span class="interest">
-                    Bioinformatics
-                </span>
-
-                <span class="interest">
-                    Biomedical Devices
-                </span>
-
-                <span class="interest">
-                    Biotech
-                </span>
-
-                <span class="interest">
-                    Translational Research
-                </span>
-
-            </div>
+            <a
+                href="https://github.com/joshuatwu"
+                target="_blank"
+                class="contact-button"
+            >
+                GITHUB
+            </a>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- CONTACT -->
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-    <section id="contact">
+<footer>
 
-        <div class="container">
+    <div>
+        © 2026 Joshua Wu
+    </div>
 
-            <div class="section-label">
-                06 · Contact
-            </div>
+    <div>
+        UCLA BIOENGINEERING · LOS ANGELES
+    </div>
 
-            <h2>
-                Let's connect.
-            </h2>
-
-            <p class="about-text">
-                I'm always interested in research, biotechnology,
-                engineering, and opportunities to build useful things.
-            </p>
-
-            <div class="buttons">
-
-                <a class="button primary"
-                   href="mailto:YOUR-EMAIL">
-                    Email
-                </a>
-
-                <a class="button"
-                   href="https://github.com/joshuatwu"
-                   target="_blank">
-                    GitHub
-                </a>
-
-                <a class="button"
-                   href="YOUR-LINKEDIN"
-                   target="_blank">
-                    LinkedIn
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
+</footer>
 
 
-    <!-- FOOTER -->
-
-    <footer>
-
-        <div class="container">
-
-            © 2026 Joshua Wu
-
-        </div>
-
-    </footer>
+</div>
 
 </body>
 </html>
